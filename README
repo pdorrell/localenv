@@ -1,0 +1,37 @@
+What is localenv?
+-----------------
+
+This project is an example of a "localenv" Python module, for storing 
+private configuration details that are used by various Python 
+applications.
+
+It's kind of a mini-registry.
+
+See the accompanying file test.py for example useage.
+
+Security Issues
+---------------
+You might want to not expose the localenv details to "untrusted"
+Python code. I put "untrusted" in quotes, because if you are running Python
+code, then it has access to your full system anyway. But
+one can think of situations where you don't want to make it _too_
+easy for applications to find and read your private data.
+
+One way to hide localenv by default is to _not_ add the localenv module to your
+standard PYTHONPATH environment variable. For example, on Windows, 
+invoke the following code when you want to run a Python script with localenv enabled:
+
+env.exe PYTHONPATH=%PYTHONPATH%;%PYTHON_LOCALENV_PATH% C:\Python25\python.exe test.py
+
+where %PYTHON_LOCALENV_PATH% is the location of the localenv module, and env.exe is from 
+Cygwin (or MSys).
+
+Other Implementations
+---------------------
+
+Given that Python effectively allows over-riding of the "." (dot) operator, the concept
+of "localenv" can be implemented in any number of ways.
+
+
+
+Philip Dorrell, http://www.1729.com/, 2 June 2008.
