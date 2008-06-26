@@ -3,6 +3,9 @@
 backupBucket = "<your-s3-bucket-name>"
 testRestoreDir = "<a sub-directory of your temp directory for restoring files into (when verifying)>"
 
+# record partial backup status after more than restoreTrigger bytes backed up since last record
+restoreTrigger = 5000000
+
 # Details of directory to be backed up from your computer to your S3 bucket
 class BackupDetails(object):
     def __init__(self, source, prefix):
